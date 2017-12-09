@@ -1,0 +1,102 @@
+\mode<presentation>
+
+% default background. can change the color here
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+	% need to automatize these...
+ 	\draw[ultra thick,red] (\paperwidth - \linewidth - 40,\paperheight - \textheight + 10) -- (\linewidth + 40,\paperheight - \textheight + 10);
+	\draw[ultra thick,red] (\paperwidth - \linewidth - 40,\textheight - 10) -- (\linewidth + 40,\textheight - 10);
+	\draw[ultra thick,red] (\paperwidth - \linewidth - 45,\paperheight - \textheight + 20) -- (\paperwidth - \linewidth - 45,\textheight - 20);
+	\draw[ultra thick,red] (\linewidth + 45,\paperheight - \textheight + 20) -- (\linewidth + 45,\textheight - 20);
+  \end{tikzpicture}
+}
+
+% title page
+\defbeamertemplate*{title page}{line}[1][]
+{ 
+    %
+    \vspace{2cm}
+    \centering
+    \usebeamerfont{title}\inserttitle\par%
+   	\vspace{0.5cm}
+ 	\usebeamerfont{author}\insertauthor \par%
+ 	\usebeamerfont{author}\insertdate \par%
+ 	\usebeamerfont{author}\insertinstitute
+ 
+  \vfill
+}
+
+% section page 
+\AtBeginSection{%
+	\begin{frame}[plain]
+	\vspace{1.6cm}
+	\begin{beamercolorbox}[center]{section title}
+		\usebeamerfont{section title}\insertsection
+	\end{beamercolorbox}
+	\begin{tikzpicture}
+	\useasboundingbox[](0,0) rectangle(\the\paperwidth,1.2);
+	\draw[ultra thick, gray] (\linewidth / 2 - 50,0.5) -- (\linewidth / 2 + 50,0.5);
+	\end{tikzpicture}
+\end{frame}
+}
+
+% beamer button 
+\setbeamertemplate{button}{\tikz
+	\node[
+	inner xsep=10pt,
+	draw=structure!80,
+	color=red,
+	%fill=structure!50,
+	rounded corners=2pt]  {\color{black} \itshape \insertbuttontext};
+}
+
+% theorem, definition, proposition and lemma
+\tcbset{linestyle/.style={
+		enhanced,
+		sharp corners,
+		attach boxed title to top left={
+			xshift=-1mm,
+			yshift=-4mm,
+			yshifttext=-1mm
+		},
+		top=1.5ex,
+		colback=white,
+		fontupper = \itshape,
+		colframe=red,
+		fonttitle=\bfseries,
+		coltitle=black,
+		boxed title style={
+			sharp corners,
+			size=small,
+			% colback=red!75!black,
+			colback= white,
+			colframe=red!75!black
+		} 
+}}
+
+\newtcbtheorem{theorem-box}{Theorem}{%
+	linestyle
+}{thm}
+
+\newtcbtheorem{proposition-box}{Proposition}{%
+	linestyle
+}{prop}
+
+\newtcbtheorem{definition-box}{Definition}{%
+	linestyle
+}{def}
+
+\newtcbtheorem{lemma-box}{Lemma}{%
+	linestyle
+}{lem}
+
+% proof
+\newenvironment{proof-box}{\textbf{Proof} \quad}{\hfill$\square$}
+\tcolorboxenvironment{proof-box}{
+	blanker,breakable,left=5mm,
+	before skip=10pt,after skip=10pt,
+	borderline west={0.5mm}{0pt}{red} 
+}
+
+\mode<all>

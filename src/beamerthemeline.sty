@@ -1,0 +1,33 @@
+%% ---------------------------------------------------------------------------
+%% Copyright 2017 Hugo Lhuillier. 
+%%
+%% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+%% ---------------------------------------------------------------------------
+
+\mode<presentation>
+
+% requirement
+\RequirePackage{tikz}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{cleveref}
+
+% settings
+\useinnertheme{line}
+\useoutertheme{line}
+\usecolortheme{line}
+
+% remove navigation symbol, let the captions be numbered, and modify the outline
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{section in toc}{\color{black}\inserttocsectionnumber.~\inserttocsection}
+
+% define the fonts
+\setbeamerfont{title}{shape=\bfseries \itshape,size=\LARGE}
+\setbeamerfont{author}{shape=\normalfont,size=\normalsize}
+\setbeamerfont{footline}{shape=\normalfont,size=\scriptsize}
+\setbeamerfont{section title}{parent=title}
+\setbeamerfont{caption name}{shape=\bfseries}
+
+\mode<all>

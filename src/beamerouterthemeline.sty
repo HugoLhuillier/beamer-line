@@ -1,0 +1,31 @@
+\mode<presentation>
+
+% frame headline
+\defbeamertemplate*{frametitle}{line}[1][]
+{
+\vskip1cm%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+  \begin{tikzpicture}
+  \useasboundingbox[](0,0) rectangle(\the\paperwidth,1.2);
+ % \fill[orange] (0,0) rectangle(2.95,1.2);
+%  \fill[blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.2);
+   \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west, black,font=\large] at (1.0,1.0){\insertframetitle};
+       \draw[thick,gray] (1.2,0.6) -- (10.0,0.6);}
+      \else%
+      {\node[anchor= west, black,font=\large] at (1.0,1.0){\insertframetitle};%
+       \node[anchor= west, black,font=\small] at (1.3,0.6){\insertframesubtitle};
+   		\draw[thick,gray] (1.2,0.2) -- (10.0,0.2);}%
+      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\addtobeamertemplate{frametitle}{\vspace*{0cm}}{\vspace*{-0.5cm}}
+
+% frame footline
+\setbeamertemplate{footline}[text line]{%
+	\parbox{10.9cm}{\usebeamerfont{footline}\vspace*{-10pt}\insertshorttitle\hfill\insertshortauthor\hfill\insertpagenumber/\inserttotalframenumber}}
+
+
+\mode<all>
